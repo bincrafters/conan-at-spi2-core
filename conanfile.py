@@ -34,7 +34,8 @@ class LibnameConan(ConanFile):
             del self.options.fPIC
     
     def build_requirements(self):
-        self.build_requires('meson/0.53.0')
+        if not tools.which('meson'):
+            self.build_requires('meson/0.53.0')
         if not tools.which('pkg-config'):
             self.build_requires('pkg-config_installer/0.29.2@bincrafters/stable')
     
@@ -94,6 +95,7 @@ class LibnameConan(ConanFile):
         self.copy(pattern="*.a", dst="lib", keep_path=False)
         self.copy(pattern="*.so*", dst="lib", keep_path=False)
         self.copy(pattern="*.dylib", dst="lib", keep_path=False)
+        tools.rmdir(os.path.join(self.package_folder, 'lib', 'pkgconfig'))
 
     def package_info(self):
         self.cpp_info.libs = tools.collect_libs(self)
@@ -103,4 +105,5 @@ class LibnameConan(ConanFile):
             return s[len(prefix):] if s.startswith(prefix) else s
         pkg = tools.PkgConfig("dbus-1")
         self.cpp_info.includedirs.extend([remove_prefix(x,'-I') for x in pkg.cflags_only_I])
+        self.cpp_info.libs.extend([remove_prefix(x, '-l') for x in pkg.libs_only_l])
         self.cpp_info.names['pkg_config'] = 'atspi-2'
