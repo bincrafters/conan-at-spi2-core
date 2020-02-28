@@ -20,7 +20,7 @@ class LibnameConan(ConanFile):
         "with_x11": [True, False],
         }
     default_options = {
-        "shared": False,
+        "shared": True,
         "fPIC": True,
         "with_x11": False,
         }
