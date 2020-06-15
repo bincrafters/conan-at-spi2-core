@@ -42,9 +42,7 @@ class LibnameConan(ConanFile):
     def requirements(self):
         self.requires('glib/2.64.0@bincrafters/stable')
         if self.options.with_x11:
-            self.requires('libx11/1.6.8@bincrafters/stable')
-            self.requires('libxtst/1.2.3@bincrafters/stable')
-            self.requires('libxcb/1.13.1@bincrafters/stable')
+            self.requires('xorg/system')
 
     def system_requirements(self):
         if self.settings.os == 'Linux':
