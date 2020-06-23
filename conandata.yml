@@ -2,3 +2,6 @@ sources:
   "2.35.1":
     url: "http://ftp.gnome.org/pub/gnome/sources/at-spi2-core/2.35/at-spi2-core-2.35.1.tar.xz"
     sha256: "ad97c7b6071c21ed59aeb092f3bdc592cf9edbca2710ff428d7829d65675a185"
+  "2.36.0":
+    url: "http://ftp.gnome.org/pub/gnome/sources/at-spi2-core/2.36/at-spi2-core-2.36.0.tar.xz"
+    sha256: "88da57de0a7e3c60bc341a974a80fdba091612db3547c410d6deab039ca5c05a"
