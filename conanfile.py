@@ -40,7 +40,7 @@ class LibnameConan(ConanFile):
             self.build_requires('pkg-config_installer/0.29.2@bincrafters/stable')
     
     def requirements(self):
-        self.requires('glib/2.64.0@bincrafters/stable')
+        self.requires('glib/2.65.1')
         if self.options.with_x11:
             self.requires('xorg/system')
 
