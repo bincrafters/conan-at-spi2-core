@@ -1,7 +1,6 @@
 from conans import ConanFile, Meson, tools
 from conans.errors import ConanInvalidConfiguration
 import os
-import shutil
 
 
 class LibnameConan(ConanFile):
@@ -70,13 +69,6 @@ class LibnameConan(ConanFile):
         return meson
 
     def build(self):
-        for package in self.deps_cpp_info.deps:
-            lib_path = self.deps_cpp_info[package].rootpath
-            for dirpath, _, filenames in os.walk(lib_path):
-                for filename in filenames:
-                    if filename.endswith('.pc'):
-                        shutil.copyfile(os.path.join(dirpath, filename), filename)
-                        tools.replace_prefix_in_pc_file(filename, lib_path)
         meson = self._configure_meson()
         meson.build()
 
