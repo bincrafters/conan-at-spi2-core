@@ -36,10 +36,10 @@ class LibnameConan(ConanFile):
         if not tools.which('meson'):
             self.build_requires('meson/0.54.2')
         if not tools.which('pkg-config'):
-            self.build_requires('pkg-config_installer/0.29.2@bincrafters/stable')
+            self.build_requires('pkgconf/1.7.3')
     
     def requirements(self):
-        self.requires('glib/2.65.1')
+        self.requires('glib/2.66.0')
         if self.options.with_x11:
             self.requires('xorg/system')
 
