@@ -39,7 +39,7 @@ class LibnameConan(ConanFile):
             self.build_requires('pkgconf/1.7.3')
     
     def requirements(self):
-        self.requires('glib/2.66.2')
+        self.requires('glib/2.67.0')
         if self.options.with_x11:
             self.requires('xorg/system')
 
